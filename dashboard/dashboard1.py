@@ -1,14 +1,11 @@
 import streamlit as st
 import pandas as pd
-import streamlit as st
 import plotly.express as px
 from PIL import Image
 import plotly.graph_objects as go
-import locale
+
 
 def mostrar():
-    # Defina a localização para português do Brasil
-    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
     ############ CSS ######
     import bcampe.estilos as est
     import bcampe.funcoes as func
