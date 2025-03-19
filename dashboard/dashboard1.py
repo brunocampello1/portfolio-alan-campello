@@ -3,7 +3,30 @@ import pandas as pd
 import plotly.express as px
 from PIL import Image
 import plotly.graph_objects as go
+import babel.numbers
 
+def converte_br(numero):
+    """
+    Converte valores numéricos grandes para formato abreviado (ex: 1M, 2B).
+    """
+    suf = {
+        1e3: "K",
+        1e6: "M",    # milhão
+        1e9: "B",    # bilhão
+        1e12: "T"    # trilhão
+    }
+    negativo = numero < 0
+    numero = abs(numero)
+
+    for s in reversed(sorted(suf.keys())):
+        if numero >= s:
+            valor_formatado = f"{numero / s:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+            if numero % s == 0:
+                valor_formatado = valor_formatado[:-3]  # Remove as casas decimais se forem ".00"
+            return f"{'-' if negativo else ''}{valor_formatado}{suf[s]}"
+
+    # Usa Babel para formatar moeda no padrão brasileiro
+    return babel.numbers.format_currency(numero, "BRL", locale="pt_BR")
 
 def mostrar():
     ############ CSS ######
@@ -150,10 +173,10 @@ def mostrar():
         kpi1, kpi2,kpi3,kpi4 = st.columns(4)
 
         # Exibir as métricas
-        kpi1.metric("Total de Despesas Empenhadas", f"R$ {func.converte_br(kpi1_value)}")
-        kpi2.metric("Total de Despesas Pagas", f"R$ {func.converte_br(kpi2_value)}")
+        kpi1.metric("Total de Despesas Empenhadas", f" {converte_br(kpi1_value)}")
+        kpi2.metric("Total de Despesas Pagas", f" {converte_br(kpi2_value)}")
         kpi3.metric("Nota de Empenho Distintas", f"{kpi3_value}")
-        kpi4.metric("Total de Despesas Liquidadas", f"R$ {func.converte_br(kpi4_value)}")
+        kpi4.metric("Total de Despesas Liquidadas", f"{converte_br(kpi4_value)}")
 
         # Layout dos gráficos
         col1, col2,col3 = st.columns([1, 1, 1])

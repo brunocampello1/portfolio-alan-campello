@@ -2,4 +2,4 @@ streamlit
 bcampe==0.95
 pandas
 openpyxl
-
+babel
