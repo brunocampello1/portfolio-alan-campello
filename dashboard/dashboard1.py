@@ -35,7 +35,7 @@ def mostrar():
     import bcampe.graficos as graf
     import bcampe.filtros as filt
     est.aplicar_css()
-    est.titulo('Obras')
+    est.titulo('Obras do Estado')
     config_graph=func.config_graph
 ############################# CARGA ############
     @st.cache_data

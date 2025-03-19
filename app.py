@@ -15,7 +15,7 @@ if st.sidebar.button("📄 Currículo"):
     st.session_state.pagina = "Currículo"
 # Seção Dashboards (apenas Dash 1 e Dash 2)
 with st.sidebar.expander("📊 Dashboards"):
-    if st.button("Dashboard 1"):
+    if st.button("Dashboard de obras do estado"):
         st.session_state.pagina = "Dash 1"
     if st.button("Dashboard 2"):
         st.session_state.pagina = "Dash 2"
