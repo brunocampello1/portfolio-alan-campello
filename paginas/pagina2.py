@@ -1,8 +1,10 @@
 import streamlit as st
-
-
-
-# Estiliza o iframe para ocupar 100% da largura
+import babel.numbers
+import pandas as pd
+import streamlit as st
+import plotly.express as px
+import plotly.graph_objects as go
+from PIL import Image
 def mostrar():
     st.markdown(
     """
@@ -37,3 +39,4 @@ def mostrar():
         """,
         unsafe_allow_html=True
     )
+    
