@@ -53,7 +53,7 @@ def mostrar():
             }
             .subtitulo {
                 font-size: 18px;
-                font-weight: bold;
+                font-weight: 900; /* Extra Bold */
                 margin-top: 20px;
                 color: #517496;
             }
