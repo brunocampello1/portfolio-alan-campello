@@ -35,12 +35,12 @@ def mostrar():
                 flex-direction: column;
             }
             .titulo {
-                font-size: 22px;
+                font-size: 24px;
                 font-weight: bold;
                 color: #052E59;
             }
             .objetivo {
-                font-size: 16px;
+                font-size: 18px;
                 font-weight: bold;
                 color: #517496;
                 margin-top: 5px;
@@ -52,13 +52,13 @@ def mostrar():
                 text-align: right;
             }
             .subtitulo {
-                font-size: 16px;
+                font-size: 18px;
                 font-weight: bold;
                 margin-top: 20px;
                 color: #517496;
             }
             .texto {
-                font-size: 14px;
+                font-size: 16px;
                 color: #333333;
             }
         </style>
@@ -102,7 +102,7 @@ def mostrar():
         <ul class="texto">
             <li>Realizei a limpeza, transformação e organização de dados semiestruturados, garantindo qualidade e consistência para análise.</li>
             <li>Desenvolvimento de dashboards e relatórios interativos utilizando Python (Streamlit).</li>
-            <li>Extração e integração de dados via APIs.</li>
+            <li>Extração de dados via APIs.</li>
             <li>Elaboração de relatórios estratégicos para tomada de decisão baseada em dados.</li>
             <li>Participação na migração de dashboards do Qlik Sense para Python (Streamlit), promovendo modernização e eficiência na área de Business Intelligence.</li>
         </ul>

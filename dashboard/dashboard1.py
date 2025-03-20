@@ -49,7 +49,7 @@ def mostrar():
     df_inicio['Data_emissão_ne'] = pd.to_datetime(df_inicio['Data_emissão_ne'], errors='coerce')
     df_inicio = df_inicio[df_inicio['Data_emissão_ne'].dt.year == 2024]
 
-    df_inicio['mes'] = df_inicio['Data_emissão_ne'].dt.month
+    df_inicio['Mes'] = df_inicio['Data_emissão_ne'].dt.month
     df_inicio['Ano'] = df_inicio['Data_emissão_ne'].dt.year
 
     # Inicializa o estado dos filtros se não estiverem no session_state
@@ -114,17 +114,48 @@ def mostrar():
     if not df.empty:
         # grafico 1
         grafico1 =graf.grafico_barras(df,var_categorica='Empresa',var_numerica='Despesas_empenhadas',hover_x='total',hover_y='empresa',titulo='Total de Despesas Empenhadas por Empresa',orientacao='h',n=7,abreviar_rotulos=True,max_caracteres=14)
-        grafico1.update_layout(height=400)
+        grafico1.update_layout(height=425)
 
-        # Criar o gráfico com os meses formatados
-        grafico2 = graf.grafico_linha(
-            df, periodo='mes', var_numerica='Despesas_empenhadas',
-            titulo='Total de Despesas Empenhadas por Mês', altura=350, preenchimento=True
+        # Dicionário para converter número do mês para nome em português
+        meses_portugues = {
+            1: "Jan", 2: "Fev", 3: "Mar", 4: "Abr", 5: "Mai", 6: "Jun",
+            7: "Jul", 8: "Ago", 9: "Set", 10: "Out", 11: "Nov", 12: "Dez"
+        }
+
+        # Agrupar as despesas por mês
+        grafico2_df = df.groupby('Mes')["Despesas_empenhadas"].sum()
+
+        # Converter números dos meses para siglas em português
+        labels_x = [meses_portugues.get(m, m) for m in grafico2_df.index]
+
+        # Criar a figura do gráfico
+        grafico2 = go.Figure()
+
+        grafico2.add_trace(go.Scatter(
+            x=labels_x,
+            y=grafico2_df.values,
+            mode='lines+markers',
+            fill='tozeroy',
+            fillcolor='rgba(5, 46, 89, 0.35)',
+            line=dict(color='#052E59'),
+            marker=dict(color='#052E59', size=6),
+            name='',
+            hovertemplate="Mês: <b>%{x}</b><br>Total: <b>%{customdata}</b><br>",
+            customdata=[converte_br(valor) for valor in grafico2_df.values]
+        ))
+
+        # Atualizar layout do gráfico
+        grafico2.update_layout(
+            title="Total de Despesas Empenhadas por Mês",
+            xaxis=dict(title="Mês"),
+            yaxis=dict(title=None),
+            xaxis_fixedrange=True,
+            yaxis_fixedrange=True,
+            height=425
         )
-        grafico2.update_layout(xaxis=dict(tickangle=0))
         #grafico3
         graf3 = df.groupby('sigla_ajustada')['Nota_de_empenho'].nunique().reset_index(name='quantidade')
-        grafico3 = graf.grafico_pizza(graf3, var_categorica='sigla_ajustada', var_numerica='quantidade',titulo='Notas de Empenho Distintas por Unidade Gestora',altura=450,valor="numero",n=5)
+        grafico3 = graf.grafico_pizza(graf3, var_categorica='sigla_ajustada', var_numerica='quantidade',titulo='Notas de Empenho Distintas por Unidade Gestora',altura=400,valor="numero",n=5)
         grafico3.update_layout(title=dict(
                     text='Total de Notas de Empenho por Órgão',
                     y=0.95,  # Ajuste a posição vertical do título (0 a 1)
@@ -135,10 +166,12 @@ def mostrar():
             )
 
         grafico3.update_traces(hoverlabel=dict(font_size=13))
+        grafico3.update_layout(height=425)
 
 
         # grafico 4
         grafico4 = graf.grafico_barras_agrupadas(df,var_categorica='sigla_ajustada',var_numerica=['Despesas_empenhadas','Despesas_liquidadas','Despesas_pagas'],n=5,ordenado_por='Despesas_empenhadas',hover_y=['Despesas empenhadas','Despesas liquidadas','Despesas pagas'],titulo='Unidade Gestora por Total de Despesas Empenhadas')
+        grafico4.update_layout(height=425)
 
         bins = [0, 1000, 5000, 10000, 50000, 100000, 1000000]
         labels = ['Menor que 1000', 'Entre 1000 e 5000', 'Entre 5000 e 10000', 
@@ -158,6 +191,7 @@ def mostrar():
 
         # Corrigir o nome do parâmetro numérico
         grafico5 = graf.grafico_barras(contagem_faixa, var_categorica='faixa', var_numerica='quantidade',titulo='Quantidade de Notas por Faixa de Valor')
+        grafico5.update_layout(height=425)
 
     else:
         grafico1 = grafico2 = grafico3 = grafico4 = grafico5 = None

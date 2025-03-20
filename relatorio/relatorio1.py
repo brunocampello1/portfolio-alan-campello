@@ -155,22 +155,39 @@ def mostrar():
     import calendar
 
     def grafico2(df, ano_filtrado=None):
-        # Dicionário com siglas dos meses em português
+        # Dicionário com siglas e nomes completos dos meses em português
         meses_portugues = {
             1: "Jan", 2: "Fev", 3: "Mar", 4: "Abr", 5: "Mai", 6: "Jun",
             7: "Jul", 8: "Ago", 9: "Set", 10: "Out", 11: "Nov", 12: "Dez"
+        }
+
+        meses_completos = {
+            1: "Janeiro", 2: "Fevereiro", 3: "Março", 4: "Abril", 5: "Maio", 6: "Junho",
+            7: "Julho", 8: "Agosto", 9: "Setembro", 10: "Outubro", 11: "Novembro", 12: "Dezembro"
         }
 
         if ano_filtrado:
             df_filtrado = df[df['Ano'].isin(map(int, ano_filtrado))]  # Certifica-se de converter para int
             graf2 = df_filtrado.groupby('Mes')["Despesas_empenhadas"].sum()  # Agrupa por mês
             titulo_x = "Mês"
-            # Converte números dos meses para siglas em português
             labels_x = [meses_portugues.get(m, m) for m in graf2.index]
+
+            # Verifica se há dados para evitar erro com idxmax()
+            if not graf2.empty:
+                mes_mais_despesa = meses_completos.get(graf2.idxmax(), "Desconhecido")
+                total_mes_mais_despesa = converte_br(graf2.max())
+            else:
+                mes_mais_despesa, total_mes_mais_despesa = "Nenhum", "0"
         else:
             graf2 = df.groupby('Ano')["Despesas_empenhadas"].sum()  # Agrupa por ano
             titulo_x = "Ano"
             labels_x = graf2.index
+
+            if not graf2.empty:
+                mes_mais_despesa = graf2.idxmax()  # Ano com mais despesa
+                total_mes_mais_despesa = converte_br(graf2.max())
+            else:
+                mes_mais_despesa, total_mes_mais_despesa = "Nenhum", "0"
 
         total_diarias = converte_br(graf2.sum())
 
@@ -195,9 +212,10 @@ def mostrar():
             yaxis_fixedrange=True,
             height=360
         )
+
         configurar_layout(fig)
 
-        return fig, total_diarias
+        return fig, total_diarias, mes_mais_despesa, total_mes_mais_despesa
 
 
     # Gráfico 3 - Notas de empenho distintas por unidade gestora
@@ -396,19 +414,19 @@ def mostrar():
 
 
     # Gráfico 2
-    st.subheader("Total de Despesas com Diárias por Ano")
-
-    fig, total_diarias = grafico2(df_filtrado, st.session_state['Ano'])
-
-    # Texto descritivo
+    fig, total_diarias, mes_mais_despesa, total_mes_mais_despesa = grafico2(df_filtrado, st.session_state['Ano'])
     if ano:
+        st.subheader("Total de Despesas com Diárias por Mês")
         st.markdown(f"""
         <p style='text-align:left; font-family: Arial, sans-serif; font-size: 17px; font-weight: normal;'>
             No ano de <b>{', '.join(ano)}</b>, o valor total empenhado em diárias foi de 
-            <b>{total_diarias}</b>, demonstrando o compromisso com o financiamento de atividades a serviço do estado.
+            <b>{total_diarias}</b>. O mês com maior despesa foi <b>{mes_mais_despesa}</b>, 
+            totalizando <b>{total_mes_mais_despesa}</b>. Esses valores refletem o compromisso com o 
+            financiamento de atividades essenciais ao serviço público.
         </p>
         """, unsafe_allow_html=True)
     else:
+        st.subheader("Total de Despesas com Diárias por Ano")
         st.markdown(f"""
         <p style='text-align:left; font-family: Arial, sans-serif; font-size: 17px; font-weight: normal;'>
             O valor total empenhado em diárias foi de <b>{total_diarias}</b>, 
