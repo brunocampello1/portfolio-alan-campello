@@ -101,8 +101,8 @@ def mostrar():
     colors_base = ['#052E59','#517496']
     def configurar_layout(fig):
         fig.update_layout(
-            paper_bgcolor='rgb(237, 237, 237)',  # Cor de fundo do papel
-            plot_bgcolor='rgb(237, 237, 237)',   # Cor de fundo do gráfico
+            paper_bgcolor='white',  # Cor de fundo do papel
+            plot_bgcolor='white',   # Cor de fundo do gráfico
             font=dict(color='rgb(0, 0, 0)'),     # Cor da fonte
             xaxis=dict(title_font=dict(color='rgb(0, 0, 0)')),  
             yaxis=dict(title_font=dict(color='rgb(0, 0, 0)')),
