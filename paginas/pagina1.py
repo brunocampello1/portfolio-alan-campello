@@ -40,19 +40,19 @@ def mostrar():
                 color: #052E59;
             }
             .objetivo {
-                font-size: 18px;
+                font-size: 20px;
                 font-weight: bold;
                 color: #517496;
                 margin-top: 5px;
             }
             .contato {
-                font-size: 16px;
+                font-size: 18px;
                 font-weight: bold;
                 color: #7A89B2;
                 text-align: right;
             }
             .subtitulo {
-                font-size: 18px;
+                font-size: 20px;
                 font-weight: 900; /* Extra Bold */
                 margin-top: 20px;
                 color: #517496;
