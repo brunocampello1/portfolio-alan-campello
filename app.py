@@ -60,7 +60,7 @@ inject_js()
 if st.session_state.pagina == "Currículo":
     pagina1.mostrar()
 if st.session_state.pagina == "Biblioteca":
-    Biblioteca.mostrar()
+    documentacao.mostrar()
 elif st.session_state.pagina == "Simulador de Investimentos":
     pagina2.mostrar()
 elif st.session_state.pagina == "Dash 1":
