@@ -2,7 +2,7 @@ import streamlit as st
 from paginas import pagina1, pagina2
 from dashboard import dashboard1
 from relatorio import relatorio1
-from biblioteca import biblioteca
+from biblioteca import documentacao
 import bcampe.estilos as bi
 from streamlit.components.v1 import html
 
