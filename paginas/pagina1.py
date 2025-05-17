@@ -100,11 +100,12 @@ def mostrar():
     st.markdown(
         """
         <ul class="texto">
-            <li>Realizei a limpeza, transformação e organização de dados semiestruturados, garantindo qualidade e consistência para análise.</li>
-            <li>Desenvolvimento de dashboards e relatórios interativos utilizando Python (Streamlit).</li>
-            <li>Extração de dados via APIs.</li>
-            <li>Elaboração de relatórios estratégicos para tomada de decisão baseada em dados.</li>
-            <li>Participação na migração de dashboards do Qlik Sense para Python (Streamlit), promovendo modernização e eficiência na área de Business Intelligence.</li>
+            <li>Realizei a limpeza, transformação e organização de dados semiestruturados, assegurando maior qualidade e consistência para análises estratégicas, com o uso de ferramentas como Pandas e SQL.</li>
+            <li>Desenvolvi a biblioteca bcampe em Python, além de toda a documentação técnica utilizada pela CGE na criação de dashboards e relatórios, padronizando processos e acelerando o desenvolvimento de soluções de dados.</li>
+            <li>Criei dashboards e relatórios interativos com Python (Streamlit), aprimorando a visualização de indicadores e contribuindo para decisões mais ágeis e fundamentadas pelas áreas de negócio.</li>
+            <li>Implementei rotinas automatizadas de extração de dados via APIs, otimizando o fluxo de informações e reduzindo significativamente o tempo de atualização de dados.</li>
+            <li>Elaborei relatórios estratégicos orientados à tomada de decisão, transformando dados brutos em insights claros e acionáveis para diferentes níveis da gestão pública.</li>
+            <li>Realizei a migração de dashboards do Qlik Sense para soluções em Python (Streamlit), promovendo a modernização do ambiente de BI e gerando uma economia estimada em R$ 200 mil em licenças, ao adotar soluções open source.</li>
         </ul>
         """,
         unsafe_allow_html=True
