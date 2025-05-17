@@ -1,6 +1,4 @@
 import streamlit as st
-import bcampe.estilos as bi
-import streamlit as st
 
 def mostrar():
     st.markdown(
@@ -78,7 +76,9 @@ def mostrar():
         unsafe_allow_html=True
     )
     
-    bi.titulo("Currículo")
+    import bcampe.estilos as est
+    est.aplicar_css()
+    est.titulo('Currículo')
     st.markdown('<p class="subtitulo">📌 Resumo Profissional</p>', unsafe_allow_html=True)
     st.markdown(
         """
