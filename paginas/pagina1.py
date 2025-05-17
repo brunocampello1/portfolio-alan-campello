@@ -78,7 +78,7 @@ def mostrar():
         unsafe_allow_html=True
     )
     
-    bi.titulo("Portfólio")
+    bi.titulo("Currículo")
     st.markdown('<p class="subtitulo">📌 Resumo Profissional</p>', unsafe_allow_html=True)
     st.markdown(
         """
