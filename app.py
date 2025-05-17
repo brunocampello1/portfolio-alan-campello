@@ -2,6 +2,7 @@ import streamlit as st
 from paginas import pagina1, pagina2
 from dashboard import dashboard1
 from relatorio import relatorio1
+import bcampe.estilos as bi
 
 st.sidebar.title("Menu")
 
@@ -28,6 +29,7 @@ with st.sidebar.expander("🖥️ Sistemas"):
 
 # Exibir a página correspondente no corpo principal
 if st.session_state.pagina == "Currículo":
+    bi.titulo("Currículo")
     pagina1.mostrar()
 elif st.session_state.pagina == "Simulador de Investimentos":
     pagina2.mostrar()
