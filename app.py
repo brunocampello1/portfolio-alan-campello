@@ -34,22 +34,21 @@ if "pagina" not in st.session_state:
 # Botões
 if st.sidebar.button("📄 Currículo"):
     st.session_state.pagina = "Currículo"
-    st.experimental_rerun()
 
 with st.sidebar.expander("📊 Dashboards"):
     if st.button("Obras do Estado"):
         st.session_state.pagina = "Dash 1"
-        st.experimental_rerun()
+
 
 with st.sidebar.expander("📄 Relatórios"):
     if st.button("Despesas com Diárias"):
         st.session_state.pagina = "Relatório 1"
-        st.experimental_rerun()
+        
 
 with st.sidebar.expander("🖥️ Sistemas"):
     if st.button("Simulador de Investimentos"):
         st.session_state.pagina = "Simulador de Investimentos"
-        st.experimental_rerun()
+       
 
 # Injeta JS
 inject_js()
