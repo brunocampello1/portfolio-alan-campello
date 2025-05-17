@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import bcampe
 
-def mostrar()
+def mostrar():
   st.title("📊 Documentação da Biblioteca `bcampe`")
   
   st.markdown("""
