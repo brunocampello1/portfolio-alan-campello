@@ -14,28 +14,27 @@ def mostrar():
   st.header("⚙️ Funções Principais")
   
   with st.expander("1. `grafico_barras()`"):
-      st.markdown("""
+    st.markdown("""
   Cria gráficos de barras horizontais ou verticais com diversas opções de customização.
-    **Parâmetros**:
-        df (pd.DataFrame): DataFrame com os dados.
-        var_categorica (str): Nome da coluna categórica.
-        var_numerica (str, opcional): Nome da coluna numérica. Se None, fará contagem de ocorrências.
-        cor (list, opcional): Lista de cores para o gráfico.
-        titulo (str, opcional): Título do gráfico.
-        n (int, opcional): Quantidade de categorias a exibir (padrão: 5).
-        orientacao (str, opcional): Orientação do gráfico ('h' para horizontal, 'v' para vertical).
-        agregacao (str, opcional): Tipo de agregação a ser usada. Pode ser 'sum', 'mean', 'median'.
-        hover_x (str, opcional): Nome do eixo x no hover.
-        hover_y (str, opcional): Nome do eixo y no hover.
-        abreviar_rotulos (bool, opcional): Se True, abrevia os rótulos do gráfico.
-        max_caracteres (int, opcional): Número máximo de caracteres permitidos nos rótulos.
-        posicao_texto (str, opcional): 
-        Posição dos valores nas barras ('inside', 'outside', 'auto' ou None para ocultar)
-        altura (int, opcional): Altura total do gráfico em pixels (padrão: 420)
-        ordenacao_eixo (list, opcional): lista manual com ordem específica das categorias.Se informado, sobrescreve a ordenação automática 
-    """
-     **Saída**: Gráfico de barras interativo (`go.Figure`)
-      """)
+  **Parâmetros**:
+      df (pd.DataFrame): DataFrame com os dados.
+      var_categorica (str): Nome da coluna categórica.
+      var_numerica (str, opcional): Nome da coluna numérica. Se None, fará contagem de ocorrências.
+      cor (list, opcional): Lista de cores para o gráfico.
+      titulo (str, opcional): Título do gráfico.
+      n (int, opcional): Quantidade de categorias a exibir (padrão: 5).
+      orientacao (str, opcional): Orientação do gráfico ('h' para horizontal, 'v' para vertical).
+      agregacao (str, opcional): Tipo de agregação a ser usada. Pode ser 'sum', 'mean', 'median'.
+      hover_x (str, opcional): Nome do eixo x no hover.
+      hover_y (str, opcional): Nome do eixo y no hover.
+      abreviar_rotulos (bool, opcional): Se True, abrevia os rótulos do gráfico.
+      max_caracteres (int, opcional): Número máximo de caracteres permitidos nos rótulos.
+      posicao_texto (str, opcional): Posição dos valores nas barras ('inside', 'outside', 'auto' ou None para ocultar).
+      altura (int, opcional): Altura total do gráfico em pixels (padrão: 420).
+      ordenacao_eixo (list, opcional): Lista manual com ordem específica das categorias. Se informado, sobrescreve a ordenação automática.
+  
+  **Saída**: Gráfico de barras interativo (`go.Figure`)
+  """)
 
   
   with st.expander("2. `grafico_barras_agrupadas()`"):
