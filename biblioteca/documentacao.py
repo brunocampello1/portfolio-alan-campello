@@ -96,8 +96,8 @@ def mostrar():
           'Valores': [10, 25, 15, 30, 20]
       })
   
-      fig = graf.grafico_barras(df, var_categorica='Categoria', var_numerica='Valores', titulo="grafico de barras")
-      fig.show()
+      fig = graf.grafico_barras(df, var_categorica='Categoria', var_numerica='Valores', titulo="grafico de barras",orientacao="h")
+      st.plotly_chart(fig, use_container_width=True)
   
   st.header("✅ Vantagens da Biblioteca")
   
