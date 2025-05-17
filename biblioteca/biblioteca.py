@@ -89,7 +89,7 @@ def mostrar()
   **Saída**: Gráfico de dispersão com hover customizado e escala ajustável.
       """)
   
-  st.header("🧪 Exemplo de Uso Básico")
+  st.header(" Exemplo de Uso Básico")
   
   with st.echo():
       df = pd.DataFrame({
@@ -97,7 +97,7 @@ def mostrar()
           'Valores': [10, 25, 15, 30, 20]
       })
   
-      fig = bcampe.grafico_barras(df, 'Categoria', 'Valores', titulo="Meu Gráfico")
+      fig = bcampe.grafico_barras(df, var_categorica='Categoria', var_numerica='Valores', titulo="grafico de barras")
       st.plotly_chart(fig, use_container_width=True)
   
   st.header("✅ Vantagens da Biblioteca")
