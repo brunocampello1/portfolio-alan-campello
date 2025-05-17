@@ -1,11 +1,10 @@
 import streamlit as st
+from streamlit.components.v1 import html
 from paginas import pagina1, pagina2
 from dashboard import dashboard1
 from relatorio import relatorio1
 import bcampe.estilos as bi
-from streamlit.components.v1 import html
 
-# Função para injetar JavaScript e manter expanders abertos
 def inject_js():
     js_code = """
     <script>
@@ -25,38 +24,39 @@ def inject_js():
     """
     html(js_code, height=0, width=0)
 
-# Configuração do sidebar
+# Sidebar
 st.sidebar.title("Menu")
 
-# Inicializa a variável de sessão se ainda não existir
+# Inicializa a variável de sessão
 if "pagina" not in st.session_state:
     st.session_state.pagina = "Currículo"
 
-# Seção Currículo
+# Botões
 if st.sidebar.button("📄 Currículo"):
     st.session_state.pagina = "Currículo"
+    st.experimental_rerun()
 
-# Seção Dashboards
 with st.sidebar.expander("📊 Dashboards"):
     if st.button("Obras do Estado"):
         st.session_state.pagina = "Dash 1"
+        st.experimental_rerun()
 
-# Seção Relatórios
 with st.sidebar.expander("📄 Relatórios"):
     if st.button("Despesas com Diárias"):
         st.session_state.pagina = "Relatório 1"
+        st.experimental_rerun()
 
-# Seção Sistemas
 with st.sidebar.expander("🖥️ Sistemas"):
     if st.button("Simulador de Investimentos"):
         st.session_state.pagina = "Simulador de Investimentos"
+        st.experimental_rerun()
 
-# Injeta o JavaScript após configurar o sidebar
+# Injeta JS
 inject_js()
 
-# Exibição da página selecionada
+# Exibição da página
 if st.session_state.pagina == "Currículo":
-    bi.titulo("Currículo")
+    bi.titulo("curriculo")
     pagina1.mostrar()
 elif st.session_state.pagina == "Simulador de Investimentos":
     pagina2.mostrar()
