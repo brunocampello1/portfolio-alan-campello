@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-import bcampe
-
+import bcampe.graficos as graf
 def mostrar():
   st.title("📊 Documentação da Biblioteca `bcampe`")
   
@@ -97,8 +96,8 @@ def mostrar():
           'Valores': [10, 25, 15, 30, 20]
       })
   
-      fig = bcampe.grafico_barras(df, var_categorica='Categoria', var_numerica='Valores', titulo="grafico de barras")
-      st.plotly_chart(fig, use_container_width=True)
+      fig = graf.grafico_barras(df, var_categorica='Categoria', var_numerica='Valores', titulo="grafico de barras")
+      fig.show()
   
   st.header("✅ Vantagens da Biblioteca")
   
