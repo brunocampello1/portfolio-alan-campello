@@ -2,6 +2,7 @@ import streamlit as st
 from paginas import pagina1, pagina2
 from dashboard import dashboard1
 from relatorio import relatorio1
+from biblioteca import biblioteca
 import bcampe.estilos as bi
 from streamlit.components.v1 import html
 
@@ -45,7 +46,8 @@ with st.sidebar.expander("📊 Dashboards"):
 with st.sidebar.expander("📄 Relatórios"):
     if st.button("Despesas com Diárias"):
         st.session_state.pagina = "Relatório 1"
-
+if st.sidebar.button("Biblioteca"):
+    st.session_state.pagina = "Biblioteca"
 # Seção Sistemas
 with st.sidebar.expander("🖥️ Sistemas"):
     if st.button("Simulador de Investimentos"):
@@ -57,6 +59,8 @@ inject_js()
 # Exibição da página selecionada
 if st.session_state.pagina == "Currículo":
     pagina1.mostrar()
+if st.session_state.pagina == "Biblioteca":
+    Biblioteca.mostrar()
 elif st.session_state.pagina == "Simulador de Investimentos":
     pagina2.mostrar()
 elif st.session_state.pagina == "Dash 1":
