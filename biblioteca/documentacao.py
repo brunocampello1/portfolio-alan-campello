@@ -40,6 +40,15 @@ def mostrar():
   
     **Saída**: Gráfico de barras interativo (`go.Figure`)
     """)
+    st.markdown("### Exemplo: Top 5 produtos mais vendidos")
+    with st.echo():
+            df_barras = pd.DataFrame({
+                'Produto': ['Notebook', 'Smartphone', 'Tablet', 'Monitor', 'Teclado'],
+                'Vendas': [350, 500, 220, 180, 150]
+            })
+            fig_barras = graf.grafico_barras(df_barras, var_categorica='Produto', var_numerica='Vendas',
+                                             titulo="Top 5 Produtos Mais Vendidos", orientacao="h")
+            st.plotly_chart(fig_barras, use_container_width=True)
 
   
   with st.expander("2. `grafico_barras_agrupadas()`"):
@@ -56,6 +65,18 @@ def mostrar():
   
   **Saída**: Gráfico interativo com barras agrupadas lado a lado.
       """)
+      st.markdown("### Exemplo: Comparativo de vendas por trimestre")
+      with st.echo():
+            df_agrupadas = pd.DataFrame({
+                'Categoria': ['Notebook', 'Smartphone', 'Tablet'],
+                '1º Trim.': [120, 200, 100],
+                '2º Trim.': [150, 220, 110],
+                '3º Trim.': [130, 210, 105]
+            })
+            fig_agrupadas = graf.grafico_barras_agrupadas(df_agrupadas, var_categorica='Categoria',
+                                                           var_numerica=['1º Trim.', '2º Trim.', '3º Trim.'],
+                                                           titulo="Vendas por Trimestre")
+            st.plotly_chart(fig_agrupadas, use_container_width=True)
   
   with st.expander("3. `grafico_pizza()`"):
       st.markdown("""
@@ -82,7 +103,15 @@ def mostrar():
   
   **Saída**: Gráfico de pizza ou rosca com legenda interativa.
       """)
-  
+    st.markdown("### Exemplo: Distribuição de usuários por plataforma")
+    with st.echo():
+            df_pizza = pd.DataFrame({
+                'Plataforma': ['Android', 'iOS', 'Web', 'Windows', 'MacOS'],
+                'Usuários': [5000, 3000, 2000, 1500, 1000]
+            })
+            fig_pizza = graf.grafico_pizza(df_pizza, var_categorica='Plataforma', var_numerica='Usuários',
+                                           titulo="Usuários por Plataforma", valor="percentual+numero", n=4, outros=True)
+            st.plotly_chart(fig_pizza, use_container_width=True)
   with st.expander("4. `grafico_linha()`"):
       st.markdown("""
   Cria gráficos de linha ou de Área.
@@ -106,6 +135,15 @@ def mostrar():
   
   **Saída**: Gráfico de linha com marcadores e preenchimento opcional.
       """)
+    st.markdown("### Exemplo: Evolução de faturamento anual")
+    with st.echo():
+            df_linha = pd.DataFrame({
+                'Ano': ['2019', '2020', '2021', '2022', '2023'],
+                'Faturamento': [1.2, 1.8, 2.1, 2.6, 3.0]
+            })
+            fig_linha = graf.grafico_linha(df_linha, periodo='Ano', var_numerica='Faturamento',
+                                           titulo="Faturamento Anual (em milhões)", preenchimento=True)
+            st.plotly_chart(fig_linha, use_container_width=True)
   
   with st.expander("5. `grafico_dispersao()`"):
       st.markdown("""
@@ -120,16 +158,15 @@ def mostrar():
   **Saída**: Gráfico de dispersão com hover customizado e escala ajustável.
       """)
   
-  st.header(" Exemplo de Uso Básico")
-  
-  with st.echo():
-      df = pd.DataFrame({
-          'Categoria': ['A', 'B', 'C', 'D', 'E'],
-          'Valores': [10, 25, 15, 30, 20]
-      })
-  
-      fig = graf.grafico_barras(df, var_categorica='Categoria', var_numerica='Valores', titulo="grafico de barras",orientacao="h")
-      st.plotly_chart(fig, use_container_width=True)
+      st.markdown("### Exemplo: Correlação entre investimento e lucro")
+      with st.echo():
+          df_disp = pd.DataFrame({
+              'Investimento': [10, 15, 20, 25, 30],
+              'Lucro': [2, 3, 5, 6, 8]
+          })
+          fig_disp = graf.grafico_dispersao(df_disp, var_numericaX='Investimento', var_numericaY='Lucro',
+                                            titulo="Relação entre Investimento e Lucro")
+          st.plotly_chart(fig_disp, use_container_width=True)
   
   st.header("Vantagens da Biblioteca")
   
