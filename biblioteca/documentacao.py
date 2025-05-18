@@ -15,7 +15,7 @@ def mostrar():
     st.code("pip install bcampe==0.94", language="bash")
     
     st.markdown("[bcampe 0.94 no PyPI](https://pypi.org/project/bcampe/0.94/)")
-    st.header("⚙️ Funções Principais")
+    st.subheader("Funções Principais")
     
     with st.expander("1. `grafico_barras()`"):
         st.markdown("""
@@ -168,7 +168,7 @@ def mostrar():
                                             title="Relação entre Investimento e Lucro")
             st.plotly_chart(fig_disp, use_container_width=True)
     
-    st.header("Vantagens da Biblioteca")
+    st.subheader("Vantagens da Biblioteca")
     
     st.markdown("""
     1. **Sintaxe Simplificada**: Crie gráficos complexos com poucas linhas.  
